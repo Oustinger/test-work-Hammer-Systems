@@ -8,7 +8,8 @@ export const AppViews = () => {
     <Suspense fallback={<Loading cover="content"/>}>
       <Switch>
         <Route path={`${APP_PREFIX_PATH}/home`} component={lazy(() => import(`./home`))} />
-        <Route path={`${APP_PREFIX_PATH}/commons/clients/list`} component={lazy(() => import(`./commons/clients/clientsList`))} />
+        <Route exact path={`${APP_PREFIX_PATH}/commons/clients/list`} component={lazy(() => import(`./commons/clients/clientsList`))} />
+        <Route path={`${APP_PREFIX_PATH}/commons/clients/list/edit/:clientId?`} component={lazy(() => import(`./commons/clients/clientsList/editClient`))} />
         <Redirect from={`${APP_PREFIX_PATH}`} to={`${APP_PREFIX_PATH}/home`} />
       </Switch>
     </Suspense>
