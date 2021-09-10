@@ -15,8 +15,7 @@ const ClientsListContainer = (props) => {
     if (clientsData === null) {
       props.getClientsData();
     }
-    // eslint-disable-next-line
-  }, []);
+  }, [props, clientsData]);
 
   const showError = props.showError;
   useEffect(() => {
@@ -28,8 +27,18 @@ const ClientsListContainer = (props) => {
   }, [props, showError]);
 
   const [clientsState, setClientsState] = useState({
-    clients: props.clientsData,
+    clients: clientsData,
   });
+
+  useEffect(() => {
+    setClientsState((prevState) =>
+      prevState.clients
+        ? clientsState
+        : {
+            clients: clientsData,
+          }
+    );
+  }, [clientsState, clientsData]);
 
   const deleteClient = (clientsId) => {
     setClientsState({
@@ -92,7 +101,4 @@ const mapStateToProps = (state) => ({
   errorMessage: state.app.errorMessage,
 });
 
-export default compose(
-    connect(mapStateToProps, { getClientsData, hideAppError }),
-    withRouter,
-)(ClientsListContainer);
+export default compose(connect(mapStateToProps, { getClientsData, hideAppError }), withRouter)(ClientsListContainer);
