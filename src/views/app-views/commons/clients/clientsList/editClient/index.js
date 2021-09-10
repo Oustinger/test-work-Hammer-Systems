@@ -24,23 +24,11 @@ class EditClient extends Component {
   }
 
   componentDidMount() {
-    if (this.props.showError) {
-      setTimeout(() => {
-        this.props.hideAppError();
-      }, 3000);
-    }
-
     if (this.clientId && !this.client && this.props.clientsData !== null)
       this.client = this.props.clientsData.find((client) => client.id === this.clientId);
   }
 
   componentDidUpdate() {
-    if (this.props.showError) {
-      setTimeout(() => {
-        this.props.hideAppError();
-      }, 3000);
-    }
-
     if (this.clientId && !this.client)
       this.client = this.props.clientsData.find((client) => client.id === this.clientId);
   }
@@ -121,8 +109,6 @@ class EditClient extends Component {
 const mapStateToProps = (state) => ({
   isLoading: state.app.isLoading,
   clientsData: state.app.clientsData,
-  showError: state.app.showError,
-  errorMessage: state.app.errorMessage,
 });
 
 export default compose(

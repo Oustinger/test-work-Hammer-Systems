@@ -1,13 +1,12 @@
-import { Alert, message } from 'antd';
+import { message } from 'antd';
 import Loading from 'components/shared-components/Loading';
-import { motion } from 'framer-motion';
+import { APP_PREFIX_PATH } from 'configs/AppConfig';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import { getClientsData, hideAppError } from './../../../../../redux/actions/App';
+import { getClientsData } from './../../../../../redux/actions/App';
 import ClientList from './ClientList';
-import { APP_PREFIX_PATH } from 'configs/AppConfig';
 
 const ClientsListContainer = (props) => {
   const clientsData = props.clientsData;
@@ -16,15 +15,6 @@ const ClientsListContainer = (props) => {
       props.getClientsData();
     }
   }, [props, clientsData]);
-
-  const showError = props.showError;
-  useEffect(() => {
-    if (showError) {
-      setTimeout(() => {
-        props.hideAppError();
-      }, 3000);
-    }
-  }, [props, showError]);
 
   const [clientsState, setClientsState] = useState({
     clients: clientsData,
@@ -68,15 +58,6 @@ const ClientsListContainer = (props) => {
 
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0, marginBottom: 0 }}
-        animate={{
-          opacity: props.showError ? 1 : 0,
-          marginBottom: props.showError ? 20 : 0,
-        }}
-      >
-        <Alert message={props.errorMessage} type="error" />
-      </motion.div>
       {props.isLoading ? (
         <Loading cover="content" />
       ) : (
@@ -97,8 +78,6 @@ const ClientsListContainer = (props) => {
 const mapStateToProps = (state) => ({
   isLoading: state.app.isLoading,
   clientsData: state.app.clientsData,
-  showError: state.app.showError,
-  errorMessage: state.app.errorMessage,
 });
 
-export default compose(connect(mapStateToProps, { getClientsData, hideAppError }), withRouter)(ClientsListContainer);
+export default compose(connect(mapStateToProps, { getClientsData }), withRouter)(ClientsListContainer);
