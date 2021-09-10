@@ -2,11 +2,11 @@ import { message } from 'antd';
 import Loading from 'components/shared-components/Loading';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { getClientsData, hideAppError } from './../../../../redux/actions/App';
 import ClientList from './ClientList';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Alert } from 'antd';
+import { getClientsData, hideAppError } from './../../../../../redux/actions/App';
 
 const ClientsListContainer = (props) => {
   const clientsData = props.clientsData;
