@@ -15,7 +15,7 @@ class EditClient extends Component {
     this.clientId = parseInt(this.props.match.params.clientId);
 
     if (this.clientId) {
-      if (this.clientsData === null) {
+      if (this.props.clientsData === null) {
         this.props.getClientsData();
       } else {
         this.client = this.props.clientsData.find((client) => client.id === this.clientId);
@@ -30,7 +30,7 @@ class EditClient extends Component {
       }, 3000);
     }
 
-    if (this.clientId && !this.client)
+    if (this.clientId && !this.client && this.props.clientsData !== null)
       this.client = this.props.clientsData.find((client) => client.id === this.clientId);
   }
 
