@@ -131,6 +131,9 @@
 	"sidenav.commons.mailings": "Mailings",
 
 	"sidenav.systems": "System",
+	"sidenav.systems.settings": "Settings",
+	"sidenav.systems.mobileApp": "Mobile app",
+	"sidenav.systems.logs": "Logs",
 
 	"sidenav.authentication": "Authentication",
 	"sidenav.authentication.login.1": "Login 1",
