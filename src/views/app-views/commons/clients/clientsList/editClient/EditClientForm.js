@@ -2,7 +2,7 @@ import { Button, Col, Form, Input, Row } from 'antd';
 import { ROW_GUTTER } from 'constants/ThemeConstant';
 import React from 'react';
 
-const EditClientForm = ({
+const EditClientForm = React.memo(({
   name,
   username,
   email,
@@ -160,6 +160,6 @@ const EditClientForm = ({
       </Row>
     </Form>
   </div>
-);
+));
 
 export default EditClientForm;

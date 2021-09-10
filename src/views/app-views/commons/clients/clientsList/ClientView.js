@@ -2,9 +2,9 @@ import {
     CompassOutlined, GlobalOutlined, MailOutlined, MobileOutlined, UserOutlined
 } from '@ant-design/icons';
 import { Avatar, Divider, Drawer } from 'antd';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-export class ClientView extends Component {
+export class ClientView extends PureComponent {
   render() {
     const { data, visible, close } = this.props;
     return (

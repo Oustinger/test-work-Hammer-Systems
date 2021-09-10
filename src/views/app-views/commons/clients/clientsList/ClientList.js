@@ -4,7 +4,7 @@ import AvatarStatus from 'components/shared-components/AvatarStatus';
 import React from 'react';
 import ClientView from './ClientView';
 
-const ClientList = ({ clients, viewState, deleteClient, showClientProfile, closeClientProfile, history, currentUrl }) => {
+const ClientList = React.memo(({ clients, viewState, deleteClient, showClientProfile, closeClientProfile, history, currentUrl }) => {
   const { clientProfileVisible, selectedClient } = viewState;
 
   const tableColumns = [
@@ -98,6 +98,6 @@ const ClientList = ({ clients, viewState, deleteClient, showClientProfile, close
       />
     </Card>
   );
-};
+});
 
 export default ClientList;

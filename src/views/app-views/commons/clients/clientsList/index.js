@@ -80,4 +80,4 @@ const mapStateToProps = (state) => ({
   clientsData: state.app.clientsData,
 });
 
-export default compose(connect(mapStateToProps, { getClientsData }), withRouter)(ClientsListContainer);
+export default compose(React.memo, connect(mapStateToProps, { getClientsData }), withRouter)(ClientsListContainer);

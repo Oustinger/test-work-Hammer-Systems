@@ -112,6 +112,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
+  React.memo,
   connect(mapStateToProps, {
     setNewClientData,
     getClientsData,

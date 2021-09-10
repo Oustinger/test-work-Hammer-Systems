@@ -52,4 +52,4 @@ const mapStateToProps = (state) => ({
   errorMessage: state.app.errorMessage,
 });
 
-export default compose(connect(mapStateToProps, { hideAppError }), React.memo)(AppViews);
+export default compose(React.memo, connect(mapStateToProps, { hideAppError }))(AppViews);
