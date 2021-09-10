@@ -4,7 +4,7 @@ import AvatarStatus from 'components/shared-components/AvatarStatus';
 import React from 'react';
 import ClientView from './ClientView';
 
-const ClientList = ({ clients, viewState, deleteClient, showClientProfile, closeClientProfile }) => {
+const ClientList = ({ clients, viewState, deleteClient, showClientProfile, closeClientProfile, history, currentUrl }) => {
   const { clientProfileVisible, selectedClient } = viewState;
 
   const tableColumns = [
@@ -78,9 +78,17 @@ const ClientList = ({ clients, viewState, deleteClient, showClientProfile, close
     },
   ];
 
+  const onRowClick = (record) => {
+    return {
+      onClick: () => {
+        history.push(`${currentUrl}/${record.id}`);
+      },
+    };
+  };
+
   return (
     <Card bodyStyle={{ padding: '0px' }}>
-      <Table columns={tableColumns} dataSource={clients} rowKey="id" />
+      <Table columns={tableColumns} dataSource={clients} rowKey="id" onRow={onRowClick} />
       <ClientView
         data={selectedClient}
         visible={clientProfileVisible}

@@ -1,12 +1,13 @@
-import { message } from 'antd';
+import { Alert, message } from 'antd';
 import Loading from 'components/shared-components/Loading';
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import ClientList from './ClientList';
-import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Alert } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 import { getClientsData, hideAppError } from './../../../../../redux/actions/App';
+import ClientList from './ClientList';
+import { APP_PREFIX_PATH } from 'configs/AppConfig';
 
 const ClientsListContainer = (props) => {
   const clientsData = props.clientsData;
@@ -76,6 +77,8 @@ const ClientsListContainer = (props) => {
           deleteClient={deleteClient}
           showClientProfile={showClientProfile}
           closeClientProfile={closeClientProfile}
+          history={props.history}
+          currentUrl={`${APP_PREFIX_PATH}/commons/clients/list/edit`}
         />
       )}
     </>
@@ -89,4 +92,7 @@ const mapStateToProps = (state) => ({
   errorMessage: state.app.errorMessage,
 });
 
-export default connect(mapStateToProps, { getClientsData, hideAppError })(ClientsListContainer);
+export default compose(
+    connect(mapStateToProps, { getClientsData, hideAppError }),
+    withRouter,
+)(ClientsListContainer);
