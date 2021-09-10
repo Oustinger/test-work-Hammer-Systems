@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import { getClientsData } from 'redux/actions/App';
+import { getClientsData, setNewClientData } from 'redux/actions/App';
 import EditClientForm from './EditClientForm';
 
 class EditClient extends Component {
@@ -48,6 +48,7 @@ class EditClient extends Component {
   render() {
     const onFinish = (values) => {
       const data = {
+        id: this.client.id,
         name: values.name,
         username: values.username,
         email: values.email,
@@ -126,7 +127,7 @@ const mapStateToProps = (state) => ({
 
 export default compose(
   connect(mapStateToProps, {
-    setNewClientData: () => ({ type: 'asd' }),
+    setNewClientData,
     getClientsData,
   }),
   withRouter

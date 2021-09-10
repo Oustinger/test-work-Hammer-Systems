@@ -1,4 +1,4 @@
-import { SET_CLIENTS_DATA, GET_CLIENTS_DATA, SHOW_APP_ERROR, SET_LOADING, HIDE_APP_ERROR } from '../constants/App';
+import { SET_CLIENTS_DATA, GET_CLIENTS_DATA, SHOW_APP_ERROR, SET_LOADING, HIDE_APP_ERROR, SET_NEW_CLIENT_DATA } from '../constants/App';
 
 export const setClientsData = (clientsData) => {
   return {
@@ -30,5 +30,12 @@ export const showAppError = (message) => {
 export const hideAppError = () => {
   return {
     type: HIDE_APP_ERROR,
+  };
+};
+
+export const setNewClientData = (data) => {
+  return {
+    type: SET_NEW_CLIENT_DATA,
+    data,
   };
 };

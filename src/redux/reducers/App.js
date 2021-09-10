@@ -1,4 +1,4 @@
-import { SET_CLIENTS_DATA, SHOW_APP_ERROR, HIDE_APP_ERROR, SET_LOADING } from '../constants/App';
+import { SET_CLIENTS_DATA, SHOW_APP_ERROR, HIDE_APP_ERROR, SET_LOADING, SET_NEW_CLIENT_DATA } from '../constants/App';
 
 const initState = {
   isLoading: false,
@@ -30,6 +30,15 @@ const app = (state = initState, action) => {
         ...state,
         errorMessage: '',
         showError: false,
+      };
+    case SET_NEW_CLIENT_DATA:
+          const newLocal = state.clientsData.reduce(
+              (acc, data) => (data.id === action.data.id ? [...acc, action.data] : [...acc, data]),
+              []
+          );
+      return {
+        ...state,
+        clientsData: newLocal,
       };
     default:
       return state;
