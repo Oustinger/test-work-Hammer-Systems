@@ -3,6 +3,7 @@ import { Button, Card, Table, Tooltip } from 'antd';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import React from 'react';
 import ClientView from './ClientView';
+import styles from './ClientList.module.css';
 
 const ClientList = React.memo(
   ({ clients, viewState, deleteClient, showClientProfile, closeClientProfile, history, currentUrl }) => {
@@ -91,7 +92,7 @@ const ClientList = React.memo(
 
     return (
       <Card bodyStyle={{ padding: '0px' }}>
-        <Table columns={tableColumns} dataSource={clients} rowKey="id" onRow={onRowClick} />
+        <Table columns={tableColumns} dataSource={clients} rowKey="id" onRow={onRowClick} rowClassName={styles.tableRow} />
         <ClientView
           data={selectedClient}
           visible={clientProfileVisible}
