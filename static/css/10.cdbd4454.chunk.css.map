@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/views/app-views/commons/clients/clientsList/ClientList.module.css"],"names":[],"mappings":"AAAA,4BACI,cACJ","file":"10.cdbd4454.chunk.css","sourcesContent":[".tableRow {\r\n    cursor: pointer;\r\n}"]}
